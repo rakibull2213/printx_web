@@ -1,11 +1,11 @@
 import React, { useState } from "react";
 import Sidenav from "../components/sideNav";
-import FileUpload from "../components/fileUploder";
-import OrderSummary from "../components/OrderSummary";
 import { PlaceOrders as placeOrderApi } from "../api";
 import { useNavigate } from 'react-router-dom';
 import { toast, ToastContainer } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
+import FileUpload from "../components/fileUploder";
+import OrderSummary from "../components/OrderSummary";
 
 const PlaceOrders = () => {
     const [fileUploaded, setFileUploaded] = useState(false);
@@ -90,7 +90,7 @@ const PlaceOrders = () => {
                     <div className="bg-white  rounded-xl p-6 mb-6">
                         <div className="flex flex-col sm:flex-row sm:items-center justify-between">
                             <div>
-                                <h1 className="text-2xl lg:text-3xl font-bold text-gray-900">Place Orders</h1>
+                                <h1 className="text-2xl lg:text-3xl font-bold text-gray-900">Place You New Order</h1>
                                 <p className="mt-1 text-sm text-gray-500">Upload your PDF file and customize your print options</p>
                             </div>
                             <div className="mt-4 sm:mt-0 flex items-center gap-2 text-blue-600">

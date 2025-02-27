@@ -236,8 +236,7 @@ const Landing = () => {
                     </div>
                 </div>
             </section>
-
-            {/* Contact Section */}
+{/* Contact Section */}
             <section className="py-20 bg-gray-50">
                 <div className="max-w-7xl mx-auto px-4">
                     <div className="text-center mb-12">
@@ -268,11 +267,41 @@ const Landing = () => {
                     </div>
                 </div>
             </section>
+{/* Mobile App Section */}
+            <section className="py-20 bg-blue-600">
+                <div className="max-w-7xl mx-auto px-4">
+                    <div className="flex flex-col lg:flex-row items-center justify-between gap-12">
+                        <div className="text-white lg:w-1/2">
+                            <h2 className="text-3xl font-bold mb-6">Get Our Mobile App</h2>
+                            <p className="text-blue-100 text-lg mb-8">
+                                Print on the go with our mobile app. Track orders, manage documents, and get real-time notifications - all from your phone.
+                            </p>
+                            <div className="flex flex-col sm:flex-row gap-4">
+                                {/* Play Store Button */}
+                                <a 
+                                    href="https://printx.en.uptodown.com/android" 
+                                    title="Download PrintX"
+                                    className="inline-flex items-center bg-white text-blue-600 px-6 py-3 rounded-lg"
+                                >
+                                    <img 
+                                        src="https://stc.utdstc.com/img/mediakit/download-gio-big-w.png" 
+                                        alt="Download PrintX"
+                                        className="h-12"
+                                    />
+                                </a>
+                            
+                            
+                            </div>
+                        </div>
+                    
+                    </div>
+                </div>
+            </section>
 {/* Existing Footer */}
             <footer className="bg-gray-50 py-12">
                 <div className="max-w-7xl mx-auto px-4 text-center">
                     <img src="/logo.png" alt="PrintX" className="h-8 w-auto mx-auto mb-4" />
-                    <p className="text-gray-600">© 2024 PrintX. All rights reserved.</p>
+                    <p className="text-gray-600">© 2025 PrintX. All rights reserved.</p>
                 </div>
             </footer>
         </div>

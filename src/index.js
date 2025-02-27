@@ -4,6 +4,7 @@ import './index.css';
 import App from './App';
 import Landing from ".//pages/Landing";
 import reportWebVitals from './reportWebVitals';
+import Products from "./pages/products";
 
 import { BrowserRouter, Routes ,Route} from 'react-router-dom';
 import Login from "./pages/auth/login";
@@ -27,6 +28,7 @@ root.render(
                 <Route path="/my-orders" element={<My_orders />} />
                 <Route path="/coupon" element={<Coupons />} />
                 <Route path= "/place-order" element={<PlaceOrders />} />
+                <Route path="/products" element={<Products />} />
                 <Route path="*" element={<NotFound />} />
             </Routes>
         </BrowserRouter>

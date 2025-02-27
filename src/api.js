@@ -36,8 +36,26 @@ export const cancelOrder = (id) => API.post(`/orders/${id}/cancel`);
 
 export const getCoupons = () => API.get("/coupons");
 
+
+
+//products 
+
+export const getProducts = () => API.get("/products");
+
 //logout
 
 export const logout = () => API.post("/logout");
+
+
+// single product order
+//place/order 
+
+export const placeSingleOrder = (formData) => {
+    return API.post("/place/order", formData, {
+        headers: {
+            'Content-Type':'multipart/form-data',
+        },
+    });
+};
 
 export default API;

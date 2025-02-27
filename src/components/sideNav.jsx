@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import { Home, Settings, LogOut, Menu, FileUp, Archive, BadgeDollarSign } from "lucide-react";
+import { Home, Settings, LogOut, Menu, FileUp, Archive, BadgeDollarSign , PackageOpen} from "lucide-react";
 import Cookies from "js-cookie";
 import { useNavigate, useLocation } from "react-router-dom";
 import { logout } from "../api";
@@ -109,6 +109,7 @@ const Sidenav = ({ isNavOpen, toggleNav }) => {
                     {/* Navigation Section */}
                     <nav className="space-y-1 flex-1">
                         <NavLink href="/dashboard" icon={Home}>Overview</NavLink>
+                        <NavLink href="/products" icon={PackageOpen}>Materials</NavLink>
                         <NavLink href="/place-order" icon={FileUp}>Place Order</NavLink>
                         <NavLink href="/my-orders" icon={Archive}>My Orders</NavLink>
                         <NavLink href="/coupon" icon={BadgeDollarSign}>All Coupons</NavLink>

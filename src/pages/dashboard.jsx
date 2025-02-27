@@ -42,20 +42,26 @@ const Dashboard = () => {
                 setError("Error fetching users. Please try refreshing the page.");
                 setUsers([]);
             });
-
+    }, []);
+    useEffect(() => {
         // Fetch orders data
         getOrders()
             .then((res) => {
                 if (Array.isArray(res.data) && res.data.length > 0) {
-                    // Get the latest order and set it | the latest order is the last one in the array
-                    setLatestOrder(res.data[res.data.length - 1]);
+                    // Find the latest non-completed order
+                    const orders = res.data;
+                    const activeOrder = orders.reverse().find(order => 
+                        order.status?.toLowerCase() !== 'ready for delivery'
+                    );
+                    setLatestOrder(activeOrder);
+                    setError(null);
                 } else {
-                    setError("No orders found.");
                     setLatestOrder(null);
                 }
             })
             .catch((err) => {
                 console.error("Failed to fetch orders:", err);
+                setLatestOrder(null);
             });
     }, []);
 
@@ -142,18 +148,22 @@ const Dashboard = () => {
                                     <p className="text-sm text-gray-500">Activity Rate</p>
                                 </div>
                             </div>
-
                             {/* Recent Orders Section */}
                             <div className="bg-white rounded-xl border border-gray-100 p-6">
                                 <div className="flex items-center justify-between mb-6">
                                     <h2 className="text-lg font-bold text-gray-900">Recent Orders</h2>
-                                    <button className="text-sm text-blue-600 hover:text-blue-700">View all</button>
+                                    <button 
+                                        onClick={() => navigate('/my-orders')} 
+                                        className="text-sm text-blue-600 hover:text-blue-700"
+                                    >
+                                        View all
+                                    </button>
                                 </div>
                                 {latestOrder && (
                                     <OrderStatus
                                         orderId={latestOrder.id}
                                         status={latestOrder.status}
-                                        fileName={latestOrder.custom_pdf_url.split('/').pop()}
+                                        fileName={latestOrder.custom_pdf_url ? latestOrder.custom_pdf_url.split('/').pop() : 'No file'}
                                         totalPrice={latestOrder.total_price}
                                         pageCount={latestOrder.page_count}
                                         color={latestOrder.color}

@@ -57,10 +57,39 @@ const Coupons = () => {
                     </div>
 
                     {loading ? (
-                        <div className="flex items-center justify-center h-64">
-                            <div className="animate-spin rounded-full h-8 w-8 border-b-2 border-blue-600"></div>
+                        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+                            {[...Array(3)].map((_, index) => (
+                                <div key={index} className="bg-white rounded-2xl shadow-sm border border-gray-100 overflow-hidden">
+                                    {/* Header Shimmer */}
+                                    <div className="p-6 bg-gray-50">
+                                        <div className="flex justify-between items-center mb-4">
+                                            <div className="animate-pulse bg-gray-200 h-6 w-24 rounded-full"></div>
+                                            <div className="animate-pulse bg-gray-200 h-6 w-20 rounded-full"></div>
+                                        </div>
+                                        <div className="animate-pulse bg-gray-200 h-8 w-32 rounded mb-2"></div>
+                                        <div className="animate-pulse bg-gray-200 h-5 w-36 rounded"></div>
+                                    </div>
+
+                                    {/* Content Shimmer */}
+                                    <div className="p-6">
+                                        <div className="bg-gray-50 px-4 py-3 rounded-lg mb-4">
+                                            <div className="flex items-center justify-between">
+                                                <div className="space-y-2">
+                                                    <div className="animate-pulse bg-gray-200 h-3 w-16 rounded"></div>
+                                                    <div className="animate-pulse bg-gray-200 h-5 w-24 rounded"></div>
+                                                </div>
+                                                <div className="animate-pulse bg-gray-200 h-6 w-6 rounded"></div>
+                                            </div>
+                                        </div>
+                                        <div className="flex items-center">
+                                            <div className="animate-pulse bg-gray-200 h-4 w-32 rounded"></div>
+                                        </div>
+                                    </div>
+                                </div>
+                            ))}
                         </div>
                     ) : (
+                        // Original coupon cards remain the same
                         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
                             {coupons.map((coupon) => (
                                 <div 

@@ -101,7 +101,7 @@ const Sidenav = ({ isNavOpen, toggleNav }) => {
                                 <p className="font-medium text-gray-900">
                                     {user ? user.name : 'Loading...'}
                                 </p>
-                                <p className="text-sm text-gray-500">Student</p>
+                                <p className="text-sm text-gray-500"> {user ? user.student_id : "Loading..."}</p>
                             </div>
                         </div>
                     </div>
@@ -115,7 +115,29 @@ const Sidenav = ({ isNavOpen, toggleNav }) => {
                         <NavLink href="/coupon" icon={BadgeDollarSign}>All Coupons</NavLink>
                         <NavLink href="#" icon={Settings}>Settings</NavLink>
                     </nav>
-
+                    
+                    {/* Download App Button */}
+                    <div className="mt-4 p-4 bg-blue-50 rounded-xl">
+                        <div className="flex items-center justify-between">
+                            <div>
+                                <h3 className="font-medium text-blue-900">PrintX Mobile</h3>
+                                <p className="text-sm text-blue-600">Get our mobile app</p>
+                            </div>
+                            <a 
+                                href="https://printx.en.uptodown.com/android" 
+                                className="p-2 bg-blue-600 text-white rounded-lg hover:bg-blue-700 transition-colors"
+                                target="_blank"
+                                rel="noopener noreferrer"
+                            >
+                                <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+                                    <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/>
+                                    <polyline points="7 10 12 15 17 10"/>
+                                    <line x1="12" y1="15" x2="12" y2="3"/>
+                                </svg>
+                            </a>
+                        </div>
+                    </div>
+                    
                     {/* Logout Section */}
                     <div className="border-t border-gray-100 pt-4 mt-4">
                         <button

@@ -65,8 +65,7 @@ const Landing = () => {
                     </div>
                 </div>
             </section>
-
-            {/* Features Section */}
+{/* Features Section */}
             <section className="py-20 bg-gray-50">
                 <div className="max-w-7xl mx-auto px-4">
                     <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
@@ -101,6 +100,94 @@ const Landing = () => {
                     </div>
                 </div>
             </section>
+{/* Study Materials Section */}
+            <section className="py-20 bg-gradient-to-r from-blue-50 to-indigo-50">
+                <div className="max-w-7xl mx-auto px-4">
+                    <div className="text-center mb-12">
+                        <h2 className="text-3xl font-bold mb-4">Study Materials Hub</h2>
+                        <p className="text-gray-600 max-w-2xl mx-auto">
+                            Access a comprehensive collection of study materials. Download digital copies instantly or order printed versions for your convenience.
+                        </p>
+                    </div>
+                    <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
+                        <div className="bg-white p-8 rounded-2xl shadow-sm border border-gray-100">
+                            <div className="flex items-center mb-6">
+                                <div className="w-12 h-12 bg-blue-100 rounded-lg flex items-center justify-center">
+                                    <svg className="w-6 h-6 text-blue-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M7 16a4 4 0 01-.88-7.903A5 5 0 1115.9 6L16 6a5 5 0 011 9.9M9 19l3 3m0 0l3-3m-3 3V10" />
+                                    </svg>
+                                </div>
+                                <div className="ml-4">
+                                    <h3 className="text-xl font-semibold">Digital Downloads</h3>
+                                    <p className="text-gray-600">Free access to soft copies</p>
+                                </div>
+                            </div>
+                            <ul className="space-y-3">
+                                <li className="flex items-center text-gray-600">
+                                    <svg className="w-5 h-5 mr-2 text-green-500" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M5 13l4 4L19 7" />
+                                    </svg>
+                                    Instant access to materials
+                                </li>
+                                <li className="flex items-center text-gray-600">
+                                    <svg className="w-5 h-5 mr-2 text-green-500" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M5 13l4 4L19 7" />
+                                    </svg>
+                                    PDF format for all devices
+                                </li>
+                                <li className="flex items-center text-gray-600">
+                                    <svg className="w-5 h-5 mr-2 text-green-500" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M5 13l4 4L19 7" />
+                                    </svg>
+                                    Regular content updates
+                                </li>
+                            </ul>
+                        </div>
+                        <div className="bg-white p-8 rounded-2xl shadow-sm border border-gray-100">
+                            <div className="flex items-center mb-6">
+                                <div className="w-12 h-12 bg-purple-100 rounded-lg flex items-center justify-center">
+                                    <svg className="w-6 h-6 text-purple-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M17 14v6m-3-3h6M6 10h2a2 2 0 002-2V6a2 2 0 00-2-2H6a2 2 0 00-2 2v2a2 2 0 002 2zm10 0h2a2 2 0 002-2V6a2 2 0 00-2-2h-2a2 2 0 00-2 2v2a2 2 0 002 2zM6 20h2a2 2 0 002-2v-2a2 2 0 00-2-2H6a2 2 0 00-2 2v2a2 2 0 002 2z" />
+                                    </svg>
+                                </div>
+                                <div className="ml-4">
+                                    <h3 className="text-xl font-semibold">Print On Demand</h3>
+                                    <p className="text-gray-600">Order physical copies</p>
+                                </div>
+                            </div>
+                            <ul className="space-y-3">
+                                <li className="flex items-center text-gray-600">
+                                    <svg className="w-5 h-5 mr-2 text-green-500" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M5 13l4 4L19 7" />
+                                    </svg>
+                                    High-quality prints
+                                </li>
+                                <li className="flex items-center text-gray-600">
+                                    <svg className="w-5 h-5 mr-2 text-green-500" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M5 13l4 4L19 7" />
+                                    </svg>
+                                    Quick delivery
+                                </li>
+                                <li className="flex items-center text-gray-600">
+                                    <svg className="w-5 h-5 mr-2 text-green-500" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M5 13l4 4L19 7" />
+                                    </svg>
+                                    Bulk order discounts
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                    <div className="text-center mt-12">
+                        <button 
+                            onClick={() => navigate('/login')}
+                            className="px-8 py-4 bg-blue-600 text-white rounded-lg hover:bg-blue-700 transition-colors font-medium inline-flex items-center group"
+                        >
+                            Browse Materials
+                            <ArrowRight className="ml-2 group-hover:translate-x-1 transition-transform" />
+                        </button>
+                    </div>
+                </div>
+            </section>
 {/* How It Works Section */}
             <section className="py-20">
                 <div className="max-w-7xl mx-auto px-4">
@@ -130,8 +217,7 @@ const Landing = () => {
                     </div>
                 </div>
             </section>
-
-            {/* Pricing Section */}
+{/* Pricing Section */}
             <section className="py-20 bg-gray-50">
                 <div className="max-w-7xl mx-auto px-4">
                     <h2 className="text-3xl font-bold text-center mb-4">Simple Pricing</h2>
@@ -208,8 +294,7 @@ const Landing = () => {
                     </div>
                 </div>
             </section>
-
-            {/* FAQ Section */}
+{/* FAQ Section */}
             <section className="py-20">
                 <div className="max-w-7xl mx-auto px-4">
                     <h2 className="text-3xl font-bold text-center mb-4">Frequently Asked Questions</h2>
@@ -289,11 +374,8 @@ const Landing = () => {
                                         className="h-12"
                                     />
                                 </a>
-                            
-                            
                             </div>
                         </div>
-                    
                     </div>
                 </div>
             </section>

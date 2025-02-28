@@ -12,39 +12,40 @@ const Dashboard = () => {
     const [latestOrder, setLatestOrder] = useState(null);
     const [error, setError] = useState(null);
     const [user, setUser] = useState(null);
+    const [isLoading, setIsLoading] = useState(true);
     const navigate = useNavigate();
 
     useEffect(() => {
-        const userCookie = Cookies.get('user');
-        if (userCookie) {
-            setUser(JSON.parse(userCookie));
-        } else {
-            navigate('/login');
-        }
-    }, [navigate]);
+        const fetchData = async () => {
+            const userCookie = Cookies.get('user');
+            if (!userCookie) {
+                navigate('/login');
+                return;
+            }
 
-    const toggleNav = () => {
-        setIsNavOpen(!isNavOpen);
-    };
-
-    useEffect(() => {
-        // Fetch user data
-        getUsers()
-            .then((res) => {
-                if (Array.isArray(res.data)) {
-                    setUsers(res.data);
-                } else {
-                    setUsers([res.data]);
+            try {
+                setUser(JSON.parse(userCookie));
+                const response = await getUsers();
+                if (response.data) {
+                    setUsers(Array.isArray(response.data) ? response.data : [response.data]);
+                    setError(null);
                 }
-            })
-            .catch((err) => {
+            } catch (err) {
                 console.error("Failed to fetch users:", err);
-                setError("Error fetching users. Please try refreshing the page.");
+                // Don't show error on first load
                 setUsers([]);
-            });
-    }, []);
+            } finally {
+                setIsLoading(false);
+            }
+        };
+
+        fetchData();
+    }, [navigate]);
+    
+    // Remove the separate useEffect for getUsers since we moved it above
+    
     useEffect(() => {
-        // Fetch orders data
+        // Fetch orders data remains the same
         getOrders()
             .then((res) => {
                 if (Array.isArray(res.data) && res.data.length > 0) {
@@ -70,25 +71,27 @@ const Dashboard = () => {
 
     return (
         <div className="min-h-screen bg-white flex">
-            <Sidenav isNavOpen={isNavOpen} toggleNav={toggleNav} />
+            <Sidenav isOpen={isNavOpen} onToggle={() => setIsNavOpen(!isNavOpen)} />
             
             <main className="flex-1 p-4 lg:p-8 overflow-y-auto">
                 <div className="max-w-7xl mx-auto">
-                    {/* Header Section */}
-                    <div className="flex flex-col md:flex-row md:items-center md:justify-between mb-8">
-                        <div className="mb-4 md:mb-0">
-                            <h1 className="text-2xl lg:text-3xl font-bold text-gray-900">Welcome Back! {user ? user.name : 'Loading...'}</h1>
-                            <p className="mt-1 text-sm text-gray-500">Here's what's happening with your orders.</p>
+                    {/* Header Section remains the same */}
+                    {isLoading ? (
+                        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 mb-8">
+                            {[...Array(4)].map((_, index) => (
+                                <div key={index} className="bg-white p-6 rounded-xl border border-gray-100">
+                                    <div className="animate-pulse space-y-4">
+                                        <div className="flex items-center justify-between">
+                                            <div className="bg-gray-200 h-12 w-12 rounded-xl"></div>
+                                            <div className="bg-gray-200 h-6 w-20 rounded-full"></div>
+                                        </div>
+                                        <div className="bg-gray-200 h-8 w-24 rounded"></div>
+                                        <div className="bg-gray-200 h-4 w-16 rounded"></div>
+                                    </div>
+                                </div>
+                            ))}
                         </div>
-                        <div className="flex items-center space-x-3">
-                            <button className="inline-flex items-center px-4 py-2 border border-gray-300 rounded-lg text-sm font-medium text-gray-700 bg-white hover:bg-gray-50">
-                                <Activity className="h-4 w-4 mr-2" />
-                                View Analytics
-                            </button>
-                        </div>
-                    </div>
-
-                    {error ? (
+                    ) : error ? (
                         <div className="text-center p-6 bg-red-50 rounded-xl border border-red-100">
                             <div className="text-red-600">{error}</div>
                         </div>

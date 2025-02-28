@@ -91,12 +91,35 @@ const Products = () => {
                             />
                         </div>
                     </div>
-
-                    {/* Products Grid */}
+                    {/* Products Grid with Shimmer Effect */}
                     {loading ? (
-                        <div className="text-center py-12">
-                            <div className="animate-spin w-8 h-8 border-4 border-blue-600 border-t-transparent rounded-full mx-auto mb-4"></div>
-                            <p className="text-gray-600">Loading products...</p>
+                        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+                            {[...Array(6)].map((_, index) => (
+                                <div key={index} className="bg-white rounded-xl border border-gray-100 overflow-hidden">
+                                    <div className="p-4 space-y-4">
+                                        {/* Shimmer title */}
+                                        <div className="animate-pulse bg-gray-200 h-6 w-3/4 rounded"></div>
+                                        
+                                        {/* Shimmer description */}
+                                        <div className="space-y-2">
+                                            <div className="animate-pulse bg-gray-200 h-4 w-full rounded"></div>
+                                            <div className="animate-pulse bg-gray-200 h-4 w-5/6 rounded"></div>
+                                        </div>
+                                        
+                                        {/* Shimmer price and date */}
+                                        <div className="flex justify-between">
+                                            <div className="animate-pulse bg-gray-200 h-4 w-16 rounded"></div>
+                                            <div className="animate-pulse bg-gray-200 h-4 w-24 rounded"></div>
+                                        </div>
+                                        
+                                        {/* Shimmer buttons */}
+                                        <div className="flex gap-2 pt-2">
+                                            <div className="animate-pulse bg-gray-200 h-10 flex-1 rounded-lg"></div>
+                                            <div className="animate-pulse bg-gray-200 h-10 flex-1 rounded-lg"></div>
+                                        </div>
+                                    </div>
+                                </div>
+                            ))}
                         </div>
                     ) : (
                         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
@@ -106,7 +129,7 @@ const Products = () => {
                                         <h3 className="font-semibold text-lg mb-2">{product.title}</h3>
                                         <p className="text-gray-600 text-sm mb-4">{product.description}</p>
                                         <div className="flex items-center justify-between text-sm text-gray-500 mb-4">
-                                            <span>{product.price_per_page} TK per page</span>
+                                            <span>{product.price_per_page} TK</span>
                                             <span>Created: {new Date(product.created_at).toLocaleDateString()}</span>
                                         </div>
                                         <div className="flex gap-2">
@@ -150,7 +173,7 @@ const Products = () => {
                         <p>Are you sure you want to place a print order for:</p>
                         <div className="bg-gray-50 p-3 rounded-lg space-y-2">
                             <p className="font-medium">{selectedProduct.title}</p>
-                            <p className="text-sm text-gray-600">Price: {selectedProduct.price_per_page} TK per page</p>
+                            <p className="text-sm text-gray-600">Price: {selectedProduct.price_per_page} TK</p>
                         </div>
                         <p className="text-sm text-gray-500">
                             After placing the order, you can view its status in My Orders.

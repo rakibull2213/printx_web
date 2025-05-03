@@ -34,6 +34,14 @@ const OrderStatus = ({ orderId, expectedArrival, trackingNumber, status, fileNam
             title: "Ready for Delivery"
         },
         { 
+            key: "Delivery Successful", 
+            label: "Delivery Successful",
+            icon: Truck,
+            color: "green",
+            title: "Delivery Successful"
+        },
+
+        { 
             key: "Decline", 
             label: "Declined",
             icon: XCircle,
@@ -169,7 +177,7 @@ const OrderStatus = ({ orderId, expectedArrival, trackingNumber, status, fileNam
             {/* Progress Timeline */}
             <div className="relative">
                 {/* Progress Line */}
-                <div className="absolute top-5 left-0 right-0 h-0.5 bg-gray-200">
+                <div className="absolute top-5 left-0 right-0 h-0.5 bg-gray-200">   
                     <div 
                         className={`h-full transition-all duration-500 ${status === 'Decline' ? 'bg-red-600' : 'bg-blue-600'}`}
                         style={{ width: `${(currentStepIndex / (statusSteps.length - 1)) * 100}%` }}

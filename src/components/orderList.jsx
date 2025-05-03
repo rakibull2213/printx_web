@@ -66,7 +66,7 @@ const OrderList = ({ orders, onOrdersUpdate }) => {
                                         <td className="px-6 py-4">
                                             {order.custom_pdf_url ? (
                                                 <a 
-                                                    href={`https://printx.geniieshop.com${order.custom_pdf_url.replace('orders', '').replace('pdfs', 'pdf')}`}
+                                                    href={`https://seashell-app-m5qg5.ondigitalocean.app/storage/${order.custom_pdf_url}`}
                                                     target="_blank" 
                                                     rel="noopener noreferrer"
                                                     className="inline-flex items-center text-sm text-blue-600 hover:text-blue-700"

@@ -125,6 +125,18 @@ const Login = () => {
                         >
                             {loading ? 'Signing in...' : 'Sign in'}
                         </button>
+                        
+                        
+                        {/* Warning Message */}
+                        <div className="mt-4 p-3 bg-yellow-50 border border-yellow-200 rounded-lg">
+                            <p className="text-sm text-yellow-800 text-center">
+                                ⚠️ Notice: All old accounts have been deleted. Please 
+                                <a href="/signup" className="text-blue-600 hover:text-blue-700 font-medium mx-1">
+                                    sign up
+                                </a> 
+                                for a new account.
+                            </p>
+                        </div>
                     </form>
                 </div>
             </div>

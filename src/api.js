@@ -56,7 +56,42 @@ export const getProducts = () => API.get("/products");
 
 export const logout = () => API.post("/logout");
 
-export const setting = () => AdminAPI.get("/setting");
+export const getSettings = () => AdminAPI.get("/settings");
+
+export const getSystemConfig = async () => {
+    try {
+        const response = await getSettings();
+        const settings = response.data.settings;
+        const systemConfig = settings.find(setting => setting.key === 'system_config');
+    
+        if (systemConfig && systemConfig.value) {
+            return JSON.parse(systemConfig.value);
+        }
+        return { maintenance_mode: false, allow_guest_orders: false };
+    } catch (error) {
+        console.error('Failed to fetch system configuration:', error);
+        return { maintenance_mode: false, allow_guest_orders: false };
+    }
+};
+
+// get Print Settings
+
+export const getPrintConfig = async () => {
+    try {
+        const response = await getSettings();
+        const settings = response.data.settings;
+        const printConfig = settings.find(setting => setting.key === 'print_settings');
+        
+        
+        if (printConfig && printConfig.value) {
+            return JSON.parse(printConfig.value);
+        }
+      
+    } catch (error) {
+        console.error('Failed to fetch system configuration:', error);
+        return { maintenance_mode: true, allow_guest_orders: false };
+    }
+};
 
 
 // single product order

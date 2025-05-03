@@ -2,7 +2,17 @@ import axios from "axios";
 import Cookies from "js-cookie";
 
 const API = axios.create({
-    baseURL: "https://printx.geniieshop.com/api/customer",
+    baseURL: "https://seashell-app-m5qg5.ondigitalocean.app/api/customer",
+    headers: {
+        "Content-Type": "application/json",
+        //token is stored in cookies
+        "Authorization": `Bearer ${Cookies.get("token")}`,
+    },
+});
+
+// admin API
+const AdminAPI = axios.create({
+    baseURL: "https://seashell-app-m5qg5.ondigitalocean.app/api/admin",
     headers: {
         "Content-Type": "application/json",
         //token is stored in cookies
@@ -45,6 +55,8 @@ export const getProducts = () => API.get("/products");
 //logout
 
 export const logout = () => API.post("/logout");
+
+export const setting = () => AdminAPI.get("/setting");
 
 
 // single product order
